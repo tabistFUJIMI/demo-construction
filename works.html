@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>施工実績 | 株式会社 ふじみDXラボ建設</title>
+  <meta name="description" content="株式会社ふじみDXラボ建設の施工実績。新築住宅・リフォーム・公共工事の完成事例をご紹介。">
+  <link rel="canonical" href="https://example.com/works.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://example.com/works.html">
+  <meta property="og:title" content="施工実績 | 株式会社 ふじみDXラボ建設">
+  <meta property="og:description" content="ふじみDXラボ建設の施工実績。新築住宅・リフォーム・公共工事の完成事例をご紹介します。">
+  <meta property="og:image" content="https://example.com/images/hero-bg.jpg">
+  <meta property="og:site_name" content="株式会社 ふじみDXラボ建設">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="施工実績 | 株式会社 ふじみDXラボ建設">
+  <meta name="twitter:description" content="ふじみDXラボ建設の施工実績。新築住宅・リフォーム・公共工事の完成事例をご紹介します。">
+  <meta name="twitter:image" content="https://example.com/images/hero-bg.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "ホーム", "item": "https://example.com/" },
+      { "@type": "ListItem", "position": 2, "name": "施工実績", "item": "https://example.com/works.html" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-inner">
+      <div class="logo">
+        <a href="index.html">
+          <span>株式会社 ふじみDXラボ建設</span>
+          <p class="logo-sub">FUJIMI DX LAB CONSTRUCTION</p>
+        </a>
+      </div>
+      <button class="menu-toggle" aria-label="メニュー"><span></span><span></span><span></span></button>
+      <nav class="nav">
+        <ul>
+          <li><a href="index.html">ホーム</a></li>
+          <li><a href="about.html">会社概要</a></li>
+          <li><a href="services.html">事業内容</a></li>
+          <li><a href="works.html" class="active">施工実績</a></li>
+          <li><a href="news.html">お知らせ</a></li>
+          <li><a href="index.html#contact">お問い合わせ</a></li>
+        </ul>
+      </nav>
+      <div class="header-tel">
+        <p class="tel-label">お気軽にお電話ください</p>
+        <p class="tel-number">0545-00-0000</p>
+        <p class="tel-hours">受付 8:00〜17:00（日祝休み）</p>
+      </div>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <p class="section-title-en" style="color:rgba(255,255,255,0.5);">Works</p>
+      <h2>施工実績</h2>
+    </div>
+  </section>
+
+  <section style="padding:60px 0;">
+    <div class="container">
+      <p class="section-desc">お客様の大切な住まいや地域のインフラ整備を、確かな技術でお届けしています。</p>
+      <!-- カテゴリフィルター -->
+      <div style="text-align:center;margin-bottom:32px;" id="works-filter">
+        <button class="btn-filter active" data-filter="all">すべて</button>
+        <button class="btn-filter" data-filter="新築住宅">新築住宅</button>
+        <button class="btn-filter" data-filter="リフォーム">リフォーム</button>
+        <button class="btn-filter" data-filter="公共工事">公共工事</button>
+        <button class="btn-filter" data-filter="商業施設">商業施設</button>
+      </div>
+      <div class="works-grid" id="works-page-grid"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <p class="footer-company">株式会社 ふじみDXラボ建設</p>
+          <p class="footer-address">〒416-0000 静岡県富士市○○町1-2-3</p>
+          <p class="footer-tel">TEL: 0545-00-0000 / FAX: 0545-00-0001</p>
+        </div>
+        <div class="footer-nav">
+          <ul>
+            <li><a href="index.html">ホーム</a></li>
+            <li><a href="about.html">会社概要</a></li>
+            <li><a href="services.html">事業内容</a></li>
+            <li><a href="works.html">施工実績</a></li>
+            <li><a href="news.html">お知らせ</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="copyright">&copy; 2026 株式会社 ふじみDXラボ建設 All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <style>
+    .btn-filter {
+      background: none;
+      border: 2px solid var(--color-border);
+      color: var(--color-text-light);
+      padding: 8px 20px;
+      border-radius: 50px;
+      font-size: 13px;
+      font-weight: 600;
+      margin: 0 4px 8px;
+      transition: all 0.2s;
+    }
+    .btn-filter:hover, .btn-filter.active {
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+      background: rgba(26,58,92,0.05);
+    }
+    .works-card { transition: all 0.4s var(--ease); }
+    .works-card.hide {
+      opacity: 0;
+      transform: scale(0.9);
+      pointer-events: none;
+      position: absolute;
+      visibility: hidden;
+    }
+  </style>
+
+  <script src="js/works-store.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('works-page-grid');
+      const allWorks = WorksStore.getPublished();
+
+      function render(filter) {
+        const items = filter === 'all' ? allWorks : allWorks.filter(w => w.category === filter);
+        grid.innerHTML = items.map(w => `
+          <div class="works-card reveal is-visible">
+            <div class="works-card-img">
+              <img src="${w.image}" alt="${w.title}" loading="lazy">
+              <span class="works-card-category">${w.category}</span>
+            </div>
+            <div class="works-card-body">
+              <h3>${w.title}</h3>
+              <p>${w.description}</p>
+              <p class="works-card-meta">${w.location}</p>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      render('all');
+
+      document.getElementById('works-filter').addEventListener('click', (e) => {
+        if (e.target.classList.contains('btn-filter')) {
+          document.querySelectorAll('.btn-filter').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          render(e.target.dataset.filter);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

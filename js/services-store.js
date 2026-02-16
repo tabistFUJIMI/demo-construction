@@ -1,0 +1,83 @@
+// 事業内容データストア (localStorage)
+const SERVICES_KEY = 'demo_services';
+
+const SEED_SERVICES = [
+  {
+    id: '1',
+    title: '新築住宅',
+    summary: 'お客様のご要望に合わせた注文住宅を施工。耐震性と快適さを両立した家づくり。',
+    description: '木造在来工法を中心に、お客様のライフスタイルに合わせた注文住宅を設計・施工いたします。耐震等級3対応、高断熱・高気密仕様で、長く安心して暮らせる住まいをご提案します。土地探しからアフターメンテナンスまで、ワンストップでサポートいたします。',
+    image: 'images/service-newbuild.jpg',
+    features: ['耐震等級3対応', '高断熱・高気密仕様', '自由設計の注文住宅', '土地探しからサポート', '10年間のアフター保証'],
+    order: 1,
+  },
+  {
+    id: '2',
+    title: 'リフォーム',
+    summary: '水回りから外壁まで、住まいのお悩みをワンストップで解決。',
+    description: 'キッチン・浴室・トイレなどの水回りリフォームから、外壁塗装、屋根修繕、内装リニューアルまで幅広く対応。築年数を重ねた住まいを快適に生まれ変わらせます。お見積りは無料。まずはお気軽にご相談ください。',
+    image: 'images/service-reform.jpg',
+    features: ['水回りリフォーム', '外壁塗装・屋根修繕', '内装リニューアル', 'バリアフリー改修', '無料見積り対応'],
+    order: 2,
+  },
+  {
+    id: '3',
+    title: '公共工事',
+    summary: '道路・橋梁・上下水道など、地域のインフラを支える確実な施工。',
+    description: '道路改良、橋梁補修、上下水道整備、河川工事など、公共インフラの建設・維持管理を手がけています。安全管理を徹底し、品質の高い施工で地域社会のインフラ整備に貢献します。',
+    image: 'images/service-civil.jpg',
+    features: ['道路改良・舗装工事', '橋梁補修・架替', '上下水道整備', '河川・砂防工事', '安全管理の徹底'],
+    order: 3,
+  },
+  {
+    id: '4',
+    title: '商業施設',
+    summary: '店舗・オフィス・倉庫などの商業建築。企画段階からご相談可能。',
+    description: '店舗、オフィスビル、倉庫、工場など、商業・事業用建築物の設計・施工を承ります。テナント工事や内装仕上げも対応可能。事業計画の段階からお打ち合わせいただけます。',
+    image: 'images/service-commercial.jpg',
+    features: ['店舗の新築・改装', 'オフィスビル建築', '倉庫・工場建設', 'テナント工事対応', '企画段階からの相談OK'],
+    order: 4,
+  },
+];
+
+const ServicesStore = {
+  _getAll() {
+    const raw = localStorage.getItem(SERVICES_KEY);
+    if (!raw) {
+      localStorage.setItem(SERVICES_KEY, JSON.stringify(SEED_SERVICES));
+      return [...SEED_SERVICES];
+    }
+    return JSON.parse(raw);
+  },
+
+  getAll() {
+    return this._getAll().sort((a, b) => (a.order || 0) - (b.order || 0));
+  },
+
+  getById(id) {
+    return this._getAll().find(s => s.id === id) || null;
+  },
+
+  save(item) {
+    const all = this._getAll();
+    if (item.id) {
+      const idx = all.findIndex(s => s.id === item.id);
+      if (idx >= 0) {
+        all[idx] = { ...all[idx], ...item };
+      }
+    } else {
+      item.id = Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+      item.order = all.length + 1;
+      all.push(item);
+    }
+    localStorage.setItem(SERVICES_KEY, JSON.stringify(all));
+    return item;
+  },
+
+  delete(id) {
+    const all = this._getAll().filter(s => s.id !== id);
+    localStorage.setItem(SERVICES_KEY, JSON.stringify(all));
+  },
+};
+
+if (typeof module !== 'undefined') module.exports = ServicesStore;
