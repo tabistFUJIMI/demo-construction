@@ -1,4 +1,4 @@
-// 施工実績データストア (localStorage)
+// 施工実績データストア (JSON file + localStorage fallback)
 const WORKS_KEY = 'demo_works';
 
 const SEED_WORKS = [
@@ -38,7 +38,21 @@ const SEED_WORKS = [
 ];
 
 const WorksStore = {
+  _cache: null,
+
+  async init() {
+    try {
+      const res = await fetch('data/works.json');
+      if (res.ok) {
+        this._cache = await res.json();
+        return;
+      }
+    } catch (e) { /* fetch失敗時はlocalStorageフォールバック */ }
+    this._cache = null;
+  },
+
   _getAll() {
+    if (this._cache) return [...this._cache];
     const raw = localStorage.getItem(WORKS_KEY);
     if (!raw) {
       localStorage.setItem(WORKS_KEY, JSON.stringify(SEED_WORKS));

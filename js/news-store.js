@@ -1,4 +1,4 @@
-// お知らせデータストア (localStorage)
+// お知らせデータストア (JSON file + localStorage fallback)
 const NEWS_KEY = 'demo_news';
 
 const SEED_NEWS = [
@@ -32,7 +32,21 @@ const SEED_NEWS = [
 ];
 
 const NewsStore = {
+  _cache: null,
+
+  async init() {
+    try {
+      const res = await fetch('data/news.json');
+      if (res.ok) {
+        this._cache = await res.json();
+        return;
+      }
+    } catch (e) { /* fetch失敗時はlocalStorageフォールバック */ }
+    this._cache = null;
+  },
+
   _getAll() {
+    if (this._cache) return [...this._cache];
     const raw = localStorage.getItem(NEWS_KEY);
     if (!raw) {
       localStorage.setItem(NEWS_KEY, JSON.stringify(SEED_NEWS));

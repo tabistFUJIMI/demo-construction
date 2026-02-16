@@ -134,7 +134,8 @@
   <script src="js/works-store.js" defer></script>
   <script src="js/main.js" defer></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+      await WorksStore.init();
       const grid = document.getElementById('works-page-grid');
       const allWorks = WorksStore.getPublished();
 

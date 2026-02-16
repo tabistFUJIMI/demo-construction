@@ -118,7 +118,8 @@
   <script src="js/services-store.js" defer></script>
   <script src="js/main.js" defer></script>
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
+      await ServicesStore.init();
       const container = document.getElementById('services-list');
       const services = ServicesStore.getAll();
 

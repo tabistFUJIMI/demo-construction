@@ -1,4 +1,4 @@
-// 事業内容データストア (localStorage)
+// 事業内容データストア (JSON file + localStorage fallback)
 const SERVICES_KEY = 'demo_services';
 
 const SEED_SERVICES = [
@@ -41,7 +41,21 @@ const SEED_SERVICES = [
 ];
 
 const ServicesStore = {
+  _cache: null,
+
+  async init() {
+    try {
+      const res = await fetch('data/services.json');
+      if (res.ok) {
+        this._cache = await res.json();
+        return;
+      }
+    } catch (e) { /* fetch失敗時はlocalStorageフォールバック */ }
+    this._cache = null;
+  },
+
   _getAll() {
+    if (this._cache) return [...this._cache];
     const raw = localStorage.getItem(SERVICES_KEY);
     if (!raw) {
       localStorage.setItem(SERVICES_KEY, JSON.stringify(SEED_SERVICES));
